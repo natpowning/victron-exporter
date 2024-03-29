@@ -1090,7 +1090,19 @@ var suffixTopicMap = map[string]mqttObserver{
 	"FluidType": gaugeObserver(
 		prometheus.GaugeOpts{
 			Name: "fluid_type",
-			Help: "The type of fluid: 0=Fuel; 1=Fresh water; 2=Waste water; 3=Live well; 4=Oil; 5=Black water (sewage); 6=Gasoline; 7=Diesel; 8=Liquid Petroleum Gas (LPG); 9=Liquid Natural Gas (LNG); 10=Hydraulic oil; 11=Raw water.",
+			Help: `The type of fluid:
+			- 0=Fuel
+			- 1=Fresh water
+			- 2=Waste water
+			- 3=Live well
+			- 4=Oil
+			- 5=Black water (sewage)
+			- 6=Gasoline
+			- 7=Diesel
+			- 8=Liquid Petroleum Gas (LPG)
+			- 9=Liquid Natural Gas (LNG)
+			- 10=Hydraulic oil
+			- 11=Raw water.`,
 		}),
 
 	"Standard": gaugeObserver(
