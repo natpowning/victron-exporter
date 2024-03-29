@@ -1066,4 +1066,202 @@ var suffixTopicMap = map[string]mqttObserver{
 			Name: "dc_battery_temperature_celsius",
 			Help: "",
 		}),
+
+	// Tank levels
+	// https://www.victronenergy.com/live/ccgx:vebus_firmware_tank_level
+	"Level": gaugeObserver(
+		prometheus.GaugeOpts{
+			Name: "level",
+			Help: "",
+		}),
+
+	"Remaining": gaugeObserver(
+		prometheus.GaugeOpts{
+			Name: "remaining_volume",
+			Help: "The remaining volume in cubic meters (m3).",
+		}),
+
+	"Capacity": gaugeObserver(
+		prometheus.GaugeOpts{
+			Name: "capacity",
+			Help: "The total capacity in cubic meters (m3).",
+		}),
+
+	"FluidType": gaugeObserver(
+		prometheus.GaugeOpts{
+			Name: "fluid_type",
+			Help: `The type of fluid:
+			- 0=Fuel
+			- 1=Fresh water
+			- 2=Waste water
+			- 3=Live well
+			- 4=Oil
+			- 5=Black water (sewage)
+			- 6=Gasoline
+			- 7=Diesel
+			- 8=Liquid Petroleum Gas (LPG)
+			- 9=Liquid Natural Gas (LNG)
+			- 10=Hydraulic oil
+			- 11=Raw water.`,
+		}),
+
+	"Standard": gaugeObserver(
+		prometheus.GaugeOpts{
+			Name: "standard",
+			Help: "The measurement standard: 0=European (resistive); 1=USA (resistive); 2=Not applicable (used for Voltage and Amp sensors).",
+		}),
+
+	"AlarmsHighActive": gaugeObserver(
+		prometheus.GaugeOpts{
+			Name: "alarms_high_active",
+			Help: "The activation level for the high alarm, as a percentage.",
+		}),
+
+	"AlarmsHighDelay": gaugeObserver(
+		prometheus.GaugeOpts{
+			Name: "alarms_high_delay",
+			Help: "The delay for the high alarm in seconds.",
+		}),
+
+	"AlarmsHighEnable": gaugeObserver(
+		prometheus.GaugeOpts{
+			Name: "alarms_high_enable",
+			Help: "Indicates if the high alarm is enabled (1) or disabled (0).",
+		}),
+
+	"AlarmsHighRestore": gaugeObserver(
+		prometheus.GaugeOpts{
+			Name: "alarms_high_restore",
+			Help: "The restore level for the high alarm, indicating the hysterisis, as a percentage.",
+		}),
+
+	"AlarmsHighState": gaugeObserver(
+		prometheus.GaugeOpts{
+			Name: "alarms_high_state",
+			Help: "The state of the high alarm: DBUS-INVALID when the alarm is disabled; otherwise, it indicates either active (1) or inactive (0).",
+		}),
+
+	"FilterLength": gaugeObserver(
+		prometheus.GaugeOpts{
+			Name: "filter_length",
+			Help: "The length of the averaging filter, probably in seconds. This is used to smooth the data over time.",
+		}),
+
+	"RawUnit": gaugeObserver(
+		prometheus.GaugeOpts{
+			Name: "raw_unit",
+			Help: "The unit of the raw value, which can be volts (V), milliamps (mA), resistance (R), or others.",
+		}),
+
+	"RawValue": gaugeObserver(
+		prometheus.GaugeOpts{
+			Name: "raw_value",
+			Help: "The raw sensor value, which needs to be interpreted based on the context of the measurement.",
+		}),
+
+	"RawValueEmpty": gaugeObserver(
+		prometheus.GaugeOpts{
+			Name: "raw_value_empty",
+			Help: "The raw value indicating an empty state for the container or tank.",
+		}),
+
+	"RawValueFull": gaugeObserver(
+		prometheus.GaugeOpts{
+			Name: "raw_value_full",
+			Help: "The raw value indicating a full state for the container or tank.",
+		}),
+
+	"Shape": gaugeObserver(
+		prometheus.GaugeOpts{
+			Name: "shape",
+			Help: "The configuration of the tank's shape, which affects how its volume is calculated.",
+		}),
+
+	// Temperature sensors
+	// https://www.victronenergy.com/live/ccgx:vebus_firmware_temperature_sensor
+	"TemperatureType": gaugeObserver(
+		prometheus.GaugeOpts{
+			Name: "temperature_type",
+			Help: "The type of temperature being measured: 0=battery; 1=fridge; 2=generic.",
+		}),
+
+	"CustomName": gaugeObserver(
+		prometheus.GaugeOpts{
+			Name: "custom_name",
+			Help: "A custom name for the sensor or measurement point, providing contextual information.",
+		}),
+
+	"Scale": gaugeObserver(
+		prometheus.GaugeOpts{
+			Name: "scale",
+			Help: "The scale factor for calibration, normally not necessary if devices are calibrated.",
+		}),
+
+	"Offset": gaugeObserver(
+		prometheus.GaugeOpts{
+			Name: "offset",
+			Help: "The offset for calibration, normally not necessary if devices are calibrated.",
+		}),
+
+	"AccelX": gaugeObserver(
+		prometheus.GaugeOpts{
+			Name: "acceleration_x",
+			Help: "The X-axis acceleration measured by the Ruuvi sensor.",
+		}),
+
+	"AccelY": gaugeObserver(
+		prometheus.GaugeOpts{
+			Name: "acceleration_y",
+			Help: "The Y-axis acceleration measured by the Ruuvi sensor.",
+		}),
+
+	"AccelZ": gaugeObserver(
+		prometheus.GaugeOpts{
+			Name: "acceleration_z",
+			Help: "The Z-axis acceleration measured by the Ruuvi sensor.",
+		}),
+
+	"BatteryVoltageRuuvi": gaugeObserver(
+		prometheus.GaugeOpts{
+			Name: "battery_voltage_ruuvi",
+			Help: "The sensor battery voltage, specifically for Ruuvi sensors.",
+		}),
+
+	"Humidity": gaugeObserver(
+		prometheus.GaugeOpts{
+			Name: "humidity",
+			Help: "The relative humidity percentage measured by the Ruuvi sensor.",
+		}),
+
+	"Pressure": gaugeObserver(
+		prometheus.GaugeOpts{
+			Name: "pressure",
+			Help: "The atmospheric pressure measured by the Ruuvi sensor, in hPa.",
+		}),
+
+	"SeqNo": gaugeObserver(
+		prometheus.GaugeOpts{
+			Name: "sequence_number",
+			Help: "The sequence number for data packets sent by the Ruuvi sensor, useful for data integrity checks.",
+		}),
+
+	"TxPower": gaugeObserver(
+		prometheus.GaugeOpts{
+			Name: "transmission_power",
+			Help: "The transmission power of the Ruuvi sensor, usually indicative of the signal strength.",
+		}),
+
+	// Can be provided by both Tank and Temperature sensors
+	//
+	"Status": gaugeObserver(
+		prometheus.GaugeOpts{
+			Name: "status",
+			Help: "The tank status: 0=Ok; 1=Disconnected; 2=Short circuited; 3=Unknown.",
+		}),
+
+	"Temperature": gaugeObserver(
+		prometheus.GaugeOpts{
+			Name: "temperature",
+			Help: "The temperature, possibly of the tank or the surrounding environment, depending on the sensor's placement.",
+		}),
 }
