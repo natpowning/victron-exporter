@@ -1,4 +1,4 @@
-module github.com/suprememoocow/victron-exporter
+module github.com/natpowning/victron-exporter
 
 go 1.17
 

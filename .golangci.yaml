@@ -226,7 +226,7 @@ linters-settings:
   goimports:
     # put imports beginning with prefix after 3rd-party packages;
     # it's a comma-separated list of prefixes
-    local-prefixes: github.com/suprememoocow/victron-exporter
+    local-prefixes: github.com/natpowning/victron-exporter
 
   gomnd:
     settings:
