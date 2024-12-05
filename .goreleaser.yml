@@ -41,17 +41,25 @@ dockers:
     - "ghcr.io/natpowning/victron-exporter:{{ .Tag }}-arm64"
     goos: linux
     goarch: arm64
+  - image_templates:
+    - "ghcr.io/natpowning/victron-exporter:latest-arm64v8"
+    - "ghcr.io/natpowning/victron-exporter:{{ .Tag }}-arm64v8"
+    goos: linux
+    goarch: arm64
+    goarm: 8
 
 docker_manifests:
   - name_template: "ghcr.io/natpowning/victron-exporter:latest"
     image_templates:
     - "ghcr.io/natpowning/victron-exporter:latest-amd64"
     - "ghcr.io/natpowning/victron-exporter:latest-arm64"
+    - "ghcr.io/natpowning/victron-exporter:latest-arm64v8"
 
   - name_template: "ghcr.io/natpowning/victron-exporter:{{ .Tag }}"
     image_templates:
     - "ghcr.io/natpowning/victron-exporter:{{ .Tag }}-amd64"
     - "ghcr.io/natpowning/victron-exporter:{{ .Tag }}-arm64"
+    - "ghcr.io/natpowning/victron-exporter:{{ .Tag }}-arm64v8"
 
 checksum:
   name_template: 'checksums.txt'
