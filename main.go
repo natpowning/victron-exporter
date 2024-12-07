@@ -50,6 +50,14 @@ var (
 		"Log level: 0=debug, 1=info, 2=warn, 3=error")
 )
 
+func logInvalidRequest(next http.Handler) http.Handler {
+    return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+        log.Debugf("Invalid request: %s %s from %s", r.Method, r.RequestURI, r.RemoteAddr)
+		w.WriteHeader(http.StatusNotFound)
+        next.ServeHTTP(w, r)
+    })
+}
+
 func main() {
 	flag.Parse()
 
@@ -58,6 +66,10 @@ func main() {
 	log.WithField("address", *listenAddress).Info("victron_exporter listening")
 
 	http.Handle("/metrics", promhttp.Handler())
+    http.Handle("/", logInvalidRequest(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "Prometheus metrics available at /metrics\n")
+    })))
+
 	go func() {
 		err := http.ListenAndServe(*listenAddress, nil)
 		if err != nil {
