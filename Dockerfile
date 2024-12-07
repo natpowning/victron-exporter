@@ -1,5 +1,5 @@
 # Invoked from goreleaser, uses binaries build by goreleaser
-FROM --platform=$TARGETPLATFORM alpine:3.16
+FROM alpine:3.16
 
 RUN apk add --no-cache bash
 
