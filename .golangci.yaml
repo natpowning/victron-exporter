@@ -366,6 +366,7 @@ linters:
     - gofumpt
     - wsl
     - gochecknoinits
+    - gomoddirectives
 
 issues:
   exclude-use-default: false
