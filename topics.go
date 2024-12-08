@@ -1068,7 +1068,7 @@ var suffixTopicMap = map[string]mqttObserver{
 		}),
 
 	// Tank levels
-	// https://www.victronenergy.com/live/ccgx:vebus_firmware_tank_level
+	// https://github.com/victronenergy/venus/wiki/dbus#tank-levels
 	"Level": gaugeObserver(
 		prometheus.GaugeOpts{
 			Name: "level",
@@ -1178,7 +1178,7 @@ var suffixTopicMap = map[string]mqttObserver{
 		}),
 
 	// Temperature sensors
-	// https://www.victronenergy.com/live/ccgx:vebus_firmware_temperature_sensor
+	// https://github.com/victronenergy/venus/wiki/dbus#temperatures
 	"TemperatureType": gaugeObserver(
 		prometheus.GaugeOpts{
 			Name: "temperature_type",
