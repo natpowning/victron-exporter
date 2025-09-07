@@ -11,7 +11,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-python@v5
-    - uses: actions/setup-go@v5
+    - uses: actions/setup-go@v6
       with:
         go-version: '1.17.11' # This should match .tool-versions
     - uses: pre-commit/action@v3.0.1
